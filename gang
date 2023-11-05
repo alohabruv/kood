@@ -95,6 +95,7 @@ func getInput() (toEncrypt bool, encoding string, message string) {
 
 // Encrypt the message with rot13
 func encrypt_rot13(s string) string {
+	s = strings.TrimSpace(s)
 	var vastus string     // Tekitab var vastus
 	for _, c := range s { // Alustab loopi korrates üle kõik tähed mis "s" ette andis, lisab need 'c'-le
 		if c >= 'a' && c <= 'z' { // Kontrollib kas on suur või väike täht nii, et kui c on vahemikus a-z on väike täht
@@ -109,6 +110,7 @@ func encrypt_rot13(s string) string {
 
 // Encrypt the message with reverse
 func encrypt_reverse(s string) string {
+	s = strings.TrimSpace(s)
 	runes := []rune(s)                 // Muudab inputi ehk 's' runedeks, määrab nad var runes
 	vastus := make([]rune, len(runes)) // Tekitatakse var mis on sama pikk kui input
 	for i, char := range runes {       // Alustab loopi kuni jõuab input runedeni.
@@ -125,6 +127,7 @@ func encrypt_reverse(s string) string {
 
 // Encrypt custom
 func encrypt_custom(s string) string { // This script passes each letter 3 steps forward
+	s = strings.TrimSpace(s)
 	liigutus := 3
 	runes := []rune(s)
 	vastus := make([]rune, len(runes))
@@ -142,16 +145,19 @@ func encrypt_custom(s string) string { // This script passes each letter 3 steps
 
 // Decrypt the message with rot13
 func decrypt_rot13(s string) string {
+	s = strings.TrimSpace(s)
 	return encrypt_rot13(s)
 }
 
 // Decrypt the message with reverse
 func decrypt_reverse(s string) string {
+	s = strings.TrimSpace(s)
 	return encrypt_reverse(s) // This part just reverses the script
 }
 
 // Decrypt custom
 func decrypt_custom(s string) string {
+	s = strings.TrimSpace(s)
 	liigutus := 3
 	runes := []rune(s)
 	vastus := make([]rune, len(runes))
